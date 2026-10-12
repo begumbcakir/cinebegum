@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #2b0c0c; 
+  color: #f4ebd0;
+  font-family: 'Poppins', sans-serif; 
+  min-height: 100vh;
+}
+
+.sayfa-düzeni {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sol-menu {
+  width: 250px;
+  background-color: #1f0808; 
+  border-right: 1px solid #3d1414;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sol-menu h1 {
+  font-family: 'Playfair Display', serif; 
+  color: #f4ebd0; /* Krem rengi başlık */
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-style: italic;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.kategoriler {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kategori-btn {
+  background-color: transparent;
+  color: #e0d5b8;
+  border: 1px solid #4a1c1c; /* Hafif bordo/kahve bir çerçeve */
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.kategori-btn:hover, .kategori-btn.aktif {
+  background-color: #4a1c1c; /* Üzerine gelince biraz daha açık bordo */
+  color: #fff;
+  border-color: #7b1113;
+  transform: translateX(5px);
+}
+
+main {
+  flex: 1; 
+  padding: 40px 50px;
+}
+
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 30px;
+}
+
+.film-kart {
+  background-color: #1f0808;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #3d1414;
+  cursor: pointer;
+}
+
+.film-kart:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+  border-color: #7b1113;
+}
+
+.film-kart img {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.film-kart h2 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #f4ebd0; /* Film isimleri krem rengi */
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.film-kart p {
+  color: #ccb9a1;
+  font-size: 0.85rem;
+}
+
+/* --- MODAL (AÇILIR PENCERE) TASARIMI (BORDO-KREM KONSEPTİ) --- */
+.modal-arkaplan {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Arka planı karanlıklaştırır */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-icerik {
+  background-color: #2b0c0c; /* Modal arka planı koyu bordo */
+  border: 1px solid #5a1e1e;
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+  color: #f4ebd0;
+}
+
+.kapat-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #f4ebd0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.kapat-btn:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.modal-govde {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.modal-govde img {
+  width: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.modal-bilgi {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-bilgi h2 {
+  color: #fff; /* Modal film başlığı tam beyaz olsun, daha çok dikkat çeksin */
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.modal-bilgi p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #e0d5b8; /* Yazılar mat krem */
+}
+
+.modal-bilgi strong {
+  color: #f4ebd0; /* Güçlü yazılar daha parlak krem */
+}
+
+.imdb-puan {
+  display: inline-block;
+  background-color: #f4ebd0; /* Puan arkaplanı krem rengi */
+  color: #2b0c0c !important; /* Puan yazısı koyu bordo */
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  align-self: flex-start;
+}
+
+.modal-bilgi .ozet {
+  margin-top: 15px;
+  border-top: 1px solid #4a1c1c;
+  padding-top: 15px;
+  font-style: italic;
+  color: #c9b99f;
+}
+
+/* Mobil ve Tablet Uyumluluğu */
+@media (max-width: 900px) {
+  .sayfa-düzeni {
+    flex-direction: column;
+  }
+  .sol-menu {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #3d1414;
+    padding: 20px;
+  }
+  .kategoriler {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .modal-govde {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .imdb-puan {
+    align-self: center;
+  }
+}
+/* --- YORUM ALANI TASARIMI (MODAL İÇİ) --- */
+.yorumlar-alani {
+  margin-top: 25px;
+  border-top: 1px solid #4a1c1c;
+  padding-top: 20px;
+}
+
+.yorumlar-alani h3 {
+  color: #f4ebd0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.yorum-kutusu {
+  background-color: #1f0808;
+  border: 1px solid #3d1414;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.yorum-baslik {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.kullanici-adi {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.yorum-tarihi {
+  color: #b59f84;
+  font-size: 0.8rem;
+}
+
+.yorum-metni {
+  color: #e0d5b8;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-style: italic;
+}
